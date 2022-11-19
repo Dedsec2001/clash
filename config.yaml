@@ -25,7 +25,6 @@ proxies:
     alterId: 0
     udp: true
     tls: true
-    skip-cert-verify: false
     servername: ashen.meetzoom.tk
     network: ws
     ws-opts:
