@@ -24,9 +24,9 @@ proxies:
     skip-cert-verify: false
     servername: ashen.meetzoom.tk
     network: ws
-    ws-opts:
-      path: /vmessws
-      headers:
+    ws-opts: 
+       path: /vmessws
+       headers:
        Host: ashen.meetzoom.tk
   - name: "MOBITEL-LINKEDIN-CDN"
     type: vmess
