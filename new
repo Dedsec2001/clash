@@ -1,0 +1,98 @@
+external-controller: 127.0.0.1:9090
+external-ui: C:\Users\Bhawan\AppData\Roaming\clash\yacd-gh-pages
+profile:
+  store-selected: true
+  store-fake-ip: true
+proxies:
+  - name: "MOBITEL-TWITTTER-NOCDN"
+    type: trojan
+    server: 138.2.73.28
+    port: 443
+    password: 6d439d49-553d-4602-8b04-cdf69c4a707d
+    udp: true
+    sni: t.co
+    skip-cert-verify: true
+  - name: "DIALOG-ZOOM-CDN"
+    type: vmess
+    server: 104.18.47.108
+    port: 443
+    uuid: 6d439d49-553d-4602-8b04-cdf69c4a707d
+    cipher: aes-128-gcm
+    alterId: 0
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: ashen.meetzoom.tk
+    network: ws
+    ws-opts:
+      path: /vmessws
+      headers:
+       Host: ashen.meetzoom.tk
+  - name: "MOBITEL-LINKEDIN-CDN"
+    type: vmess
+    server: 104.18.47.108
+    port: 443
+    uuid: 6d439d49-553d-4602-8b04-cdf69c4a707d
+    cipher: aes-128-gcm
+    alterId: 0
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: linkedin.iamtrazy.tk
+    network: ws
+    ws-opts:
+      path: /vmessws
+      headers:
+       Host: linkedin.iamtrazy.tk
+  - name: "Dialog 0"
+    type: vmess
+    server: d216901qxcl0k5.cloudfront.net
+    port: 443
+    uuid: 15e38fc7-ebd7-4050-a153-ac41ee1bd9f5
+    alterId: 0
+    cipher: auto
+    udp: true
+    tls: true
+    skip-cert-verify: false
+    servername: d216901qxcl0k5.cloudfront.net
+    network: ws
+    ws-opts:
+       path: /vless
+       headers:
+         Host: d118ao3w9nb3kb.cloudfront.net
+
+proxy-groups:
+  - name: "auto"
+    type: select
+    proxies:
+    - DIRECT
+    - MOBITEL-TWITTTER-NOCDN
+    - DIALOG-ZOOM-CDN
+    - MOBITEL-LINKEDIN-CDN
+    - Dialog 0
+rules:
+  - IP-CIDR,192.248.0.0/17,DIRECT
+  - IP-CIDR,192.248.64.0/18,DIRECT
+  - IP-CIDR,192.248.32.0/19,DIRECT
+  - IP-CIDR,192.248.16.0/20,DIRECT
+  - IP-CIDR,192.248.8.0/21,DIRECT
+  - IP-CIDR,103.77.64.0/22,DIRECT
+  - IP-CIDR,192.248.0.0/22,DIRECT
+  - IP-CIDR,192.248.4.0/22,DIRECT
+  - MATCH,auto
+dns:
+  enable: true
+  ipv6: false
+  enhanced-mode: fake-ip
+  nameserver:
+   - 192.168.8.1
+log-level: silent
+allow-lan: false
+ipv6: false
+tun:
+  enable: true
+  stack: gvisor
+  dns-hijack:
+    - 198.18.0.2:53
+  auto-route: true
+  auto-detect-interface: true
