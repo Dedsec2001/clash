@@ -25,6 +25,7 @@ proxies:
     alterId: 0
     udp: true
     tls: true
+    skip-cert-verify: false
     servername: ashen.meetzoom.tk
     network: ws
     ws-opts:
@@ -92,7 +93,7 @@ proxies:
       path: /vmessws
       headers:
        Host: d3mea97j4x8196.cloudfront.net
-  - name: "vmess"
+  - name: "vmess hutch"
     type: vmess
     server: 104.237.129.111
     port: 25948
@@ -110,6 +111,24 @@ proxies:
        Host: online.hutch.lk
     #   max-early-data: 2048
     #   early-data-header-name: Sec-WebSocket-Protocol   
+  - name: "vmess airtel"
+    type: vmess
+    server: 104.237.129.111
+    port: 25948
+    uuid: 17f4d988-71f8-4fde-882e-df7b766b060d
+    alterId: 0
+    cipher: auto
+    # udp: true
+    # tls: true
+    # skip-cert-verify: true
+    # servername: example.com # priority over wss host
+    network: ws
+    ws-opts:
+      path: /vmess
+      headers:
+       Host: d2iqz9fz51gnd9.cloudfront.net
+    #   max-early-data: 2048
+    #   early-data-header-name: Sec-WebSocket-Protocol   
 
 proxy-groups:
   - name: "auto"
@@ -121,7 +140,8 @@ proxy-groups:
     - Dialog 0
     - DIALOG 0 TROJAN
     - DIALOG 02
-    - vmess
+    - vmess hutch
+    - vmess airtel
   - name: "fallback-auto"
     type: fallback
     proxies:
@@ -131,7 +151,8 @@ proxy-groups:
     - Dialog 0
     - DIALOG 0 TROJAN
     - DIALOG 02
-    - vmess
+    - vmess hutch
+    - vmess airtel
     url: 'http://www.gstatic.com/generate_204'
     interval: 10  
   - name: Proxy
@@ -143,7 +164,8 @@ proxy-groups:
     - Dialog 0
     - DIALOG 0 TROJAN
     - DIALOG 02
-    - vmess
+    - vmess hutch
+    - vmess airtel
    #disable-udp: true
   - name: "load-balance"
     type: load-balance
@@ -154,7 +176,8 @@ proxy-groups:
     - Dialog 0
     - DIALOG 0 TROJAN
     - DIALOG 02
-    - vmess
+    - vmess hutch
+    - vmess airtel
     url: 'http://www.gstatic.com/generate_204'
     interval: 10
    #lazy: true
@@ -169,7 +192,8 @@ proxy-groups:
     - Dialog 0
     - DIALOG 0 TROJAN
     - DIALOG 02
-    - vmess
+    - vmess hutch
+    - vmess airtel
  #disable-udp: true   
 rules:
   - IP-CIDR,192.248.0.0/17,DIRECT
@@ -187,6 +211,8 @@ dns:
   enhanced-mode: fake-ip
   nameserver:
    - 192.168.1.1
+   - 192.168.8.1
+   - 192.168.205.254
 log-level: silent
 allow-lan: false
 ipv6: false
